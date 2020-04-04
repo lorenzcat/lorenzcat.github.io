@@ -45,7 +45,7 @@ me_json =
             title : "What i have been doing recently",
             list :
             [
-                {
+                /*{
                     what : "CyberChallenge.IT 2020",
                     when : {
                         start: "MAR 20",
@@ -55,7 +55,7 @@ me_json =
                     href: "https://cyberchallenge.it/",
                     desc : "Tutor for the cc20"
                             
-                },
+                },*/
                 {
                     what : "ITASEC20",
                     when : {
