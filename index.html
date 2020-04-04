@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="">
+
+    <title>Lorenzo Catoni</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- My CSS -->
+    <style>
+      body { padding-top: 50px; } /* because navbar fixed-top goes over */
+
+      /* Setup colors for my color palette */
+      .my-palette-bg, .my-palette-bg * { background-color: /*#121212*/ #232931 !important; }
+      .my-palette-onbg, .my-palette-onbg * { background-color: /*#1f1f1f*/ #393e46 !important; }      
+      .my-palette-textprimary, .my-palette-textprimary * { color: #ffffff !important; }
+      .my-palette-textsecondary, .my-palette-textsecondary * { color: #8f8f8f /*#eeeeee*/ !important; }
+      .my-palette-textcolor1, .my-palette-textcolor1 * { color: #03dac5 /*#43cca0*/ !important; }
+
+      .navbar { border-bottom: 1px solid #232931;}
+      
+      .my-active, .my-active * { text-decoration: underline; color: #03dac5 !important;}
+
+      #Curriculum a:hover, #Curriculum a:hover * { color: #03dac5 !important;} /* Add color on hover for links in curriculum desc*/
+      #Contacts a { text-decoration: none;}
+
+      div.my-horizontal-divider { /* horizontal line */
+        display: block;
+        margin: 1rem auto;
+        border: 0;
+        border-top: 1px solid #03dac5;
+      }
+
+      /* Same breakpoint as bootstrap md */
+      div.my-w-smart { width: 60%; }
+      img.my-w-smart { width: 17%; }
+      @media only screen and (max-width: 768px) {
+        div.my-w-smart { width: 100%; }
+        img.my-w-smart { width: 30%;}
+  
+      }
+      
+    </style>
+    <!-- /My CSS -->
+  </head>
+
+  <body class="my-palette-bg my-palette-textprimary">
+      
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-md my-palette-onbg fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="my-navbar">
+        <ul class="navbar-nav my-palette-textsecondary">
+          <li class="nav-item my-active">
+            <a class="nav-link" href="#Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Curriculum">Curriculum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Contacts">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+
+    <!-- Home -->
+    <div class="w-100 d-block py-md-4 py-3" id="Home">
+      <img src="{{home.img.img}}" class="rounded-circle mx-auto d-block my-w-smart" alt="{{home.img.alt}}">
+    
+
+      <div class="w-100 d-block py-md-3 py-2">
+        <h1 class="text-center">{{home.name}}</h1>
+        <div class="my-horizontal-divider w-25"></div>
+        <h3 class="text-center">{{{home.desc}}}</h3>
+      </div>
+    </div>
+    <!-- /Home -->
+  
+    <!-- Curriculum -->
+    <div class="py-md-5 py-4" id="Curriculum">
+      <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+      {{#curriculum}}
+        <h3 class="text-center">{{title}}</h3>
+        
+        <div class="list-group py-4">
+          {{#list}}
+          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
+            
+            {{#href}}<a href="{{.}}">{{/href}}
+              <h5 class="font-weight-bold">
+                <u class="my-color-on-hover">{{what}}</u>
+              </h5>
+            {{#href}}</a>{{/href}}
+            
+            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">{{when.start}}{{#when.end}} - {{.}}{{/when.end}}, {{where}}</p>
+            <p class="mb-1 pt-1">{{{desc}}}</p>
+            <div class="my-horizontal-divider w-75"></div>
+          </div>
+          {{/list}}
+        </div>
+        {{/curriculum}}
+      </div>
+    </div>
+    <!-- /Curriculum -->
+
+     <!-- Contacts -->
+     <div class="py-md-5 py-4" id="Contacts">
+      <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+        <h3 class="text-center">Contact me</h3>
+        <div class="list-group py-4">
+          {{#contacts}}
+          <div class="list-group-item border-0">
+            <a href="{{href}}">
+              <img style="width: 25px; margin-top: -0.5rem;" src="{{img.img}}" alt="{{img.alt}}">
+              <h4 class="d-inline-block" style="padding: 0 1rem;">{{uname}}</h4>
+              <small class="my-palette-textsecondary" style="display: none;">{{easteregg}}</small>
+            </a>
+          </div>
+          {{/contacts}}
+        </div>
+      </div>
+    </div>
+    <!-- /Contacts -->
+
+    <!-- Footer -->
+    <div class="py-2">
+      {{#footer}}
+      <p class="my-palette-textsecondary text-center">{{{.}}}</p>
+      {{/footer}}
+    </div>
+    <!-- /Footer -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0//dist/js/bootstrap.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js></script>
+
+    <!-- My Javascript -->
+    <script src="me_json.js">/* Import data from this file*/</script>
+    <script>
+      // fill page according to content of me_json, it's magical
+      // https://github.com/janl/mustache.js
+      let rendered_html = Mustache.render($('body').html(), me_json);
+      $('body').html(rendered_html);
+      //template.siblings().last().remove(); // remove last horizontal divider, i want it ony between two elements
+
+      // Change active fragment in navbar on click, based on this post
+      // https://stackoverflow.com/questions/39851953/dynamically-changing-active-class-or-adding-navbar-to-each-page
+      $('.nav-link').click( function() {
+        $(this).parent().siblings().removeClass('my-active');
+        $(this).parent().addClass('my-active');
+      });
+      
+      // Change active fragment in navbar on scroll, based on this post
+      // https://stackoverflow.com/questions/9979827/change-active-menu-item-on-page-scroll
+      let navbar = $(".navbar"), // Cache selectors
+        navbarHeight = navbar.outerHeight()+15,
+        navbarItems = navbar.find("a"), // All navbar navigation links
+        scrollItems = navbarItems.map(function(){ // Anchors corresponding to navbar links
+          let item = $($(this).attr("href"));
+          if (item.length) return item;
+        });
+      // Bind to scroll
+      $(window).scroll(function(){
+        let fromTop = $(this).scrollTop()+navbarHeight; // Get container scroll position
+
+        let cur = scrollItems.map(function(){ // Get id of items i have scrolled past
+          if ($(this).offset().top < fromTop) return this;
+        });
+        cur = cur[cur.length-1]; // Get the id of the current element
+        let id = cur && cur.length ? cur[0].id : "";
+
+        navbarItems.parent().removeClass("my-active") // Set/remove active class
+          .end().filter("[href='#"+id+"']").parent().addClass("my-active");
+      });
+
+      // Do fun animation on hover for Contacts section
+      const MD_BP = 768; // Same width at bootstrap md breakpoint
+      $("#Contacts a").hover(
+        function(){ // Handler in
+          $(this).find("h4").css("font-weight", "bold");
+          if($(document).width() > MD_BP) 
+            $(this).find("small").css("display", "");
+        },
+        function(){ // Handler out
+          $(this).find("h4").css("font-weight", "normal");
+          if($(document).width() > MD_BP)
+            $(this).find("small").css("display", "none");
+        }
+      );
+    </script>
+    <!-- /My Javascript -->
+  </body>
+</html>
