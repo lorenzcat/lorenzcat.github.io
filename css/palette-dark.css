@@ -1,0 +1,8 @@
+/* Setup colors for my color palette */
+:root {
+    --my-palette-bg: #0d0e21;
+    --my-palette-onbg: #17182a;
+    --my-palette-textprimary: #ffffff;
+    --my-palette-textsecondary: #8f8f8f;
+    --my-palette-color1: #feb32b/*#e85154 #03dac5*/;
+}
