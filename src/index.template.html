@@ -94,13 +94,13 @@
 
     <!-- Home -->
     <div class="w-100 d-block py-md-4 py-3" id="Home">
-      <img src="img/imgprofilo.jpg" class="rounded-circle mx-auto d-block my-w-smart" alt="This is me">
+      <img src="{{{home.img.img}}}" class="rounded-circle mx-auto d-block my-w-smart" alt="{{home.img.alt}}">
     
 
       <div class="w-100 d-block py-md-3 py-2">
-        <h1 class="text-center">Lorenzo Catoni</h1>
+        <h1 class="text-center">{{home.name}}</h1>
         <div class="my-horizontal-divider w-25"></div>
-        <h3 class="text-center">Computer engineering student<br>CTF player</h3>
+        <h3 class="text-center">{{{home.desc}}}</h3>
       </div>
     </div>
     <!-- /Home -->
@@ -108,62 +108,26 @@
     <!-- Curriculum -->
     <div class="py-md-5 py-4" id="Curriculum">
       <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
-        <h2 class="text-center">Education</h2>
+      {{#curriculum}}
+        <h2 class="text-center">{{title}}</h2>
         
         <div class="list-group py-4">
+          {{#list}}
           <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
             
-            
+            {{#href}}<a href="{{{.}}}" target="_blank">{{/href}}
               <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">Bachelor&#39;s degree</u>
+                <u class="my-color-on-hover">{{what}}</u>
               </h5>
+            {{#href}}</a>{{/href}}
             
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">OCT 18 - PRESENT, PISA (Italy)</p>
-            <p class="mb-1 pt-1">Bachelor's degree in computer engineering at <a href='http://www.ing.unipi.it/en/' target='_blank'>University of Pisa</a></p>
+            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">{{when.start}}{{#when.end}} - {{.}}{{/when.end}}, {{where}}</p>
+            <p class="mb-1 pt-1">{{{desc}}}</p>
             <div class="my-horizontal-divider w-75"></div>
           </div>
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">Diploma</u>
-              </h5>
-            
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">SEP 13 - JUL 18, VITERBO (Italy)</p>
-            <p class="mb-1 pt-1">High school diploma at scientific high school <a href='https://www.liceopaoloruffiniviterbo.edu.it/' target='_blank'>Paolo Ruffini</a><br>Thesis on "Nikola Testa and The War of the Currents" with a final score of 100/100</p>
-            <div class="my-horizontal-divider w-75"></div>
-          </div>
+          {{/list}}
         </div>
-        <h2 class="text-center">What i have been doing recently</h2>
-        
-        <div class="list-group py-4">
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            <a href="https://itasec.it/" target="_blank">
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">ITASEC20</u>
-              </h5>
-            </a>
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">4 SEP 20, ANCONA (Italy)</p>
-            <p class="mb-1 pt-1">Gave a talk with Nicola Vella and Marco Gaglianese at Capture.IT (a workshop @ itasec) on our experince at CyberChallenge.IT 2019 and in capture the flag competitions in general, plus gave some tips aimed at beginners intrested in CTFs</p>
-            <div class="my-horizontal-divider w-75"></div>
-          </div>
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            <a href="https://cyberchallenge.it/halloffame/2019" target="_blank">
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">CyberChallenge.IT 2019</u>
-              </h5>
-            </a>
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">MAR 19 - JUL 19, PISA (Italy)</p>
-            <p class="mb-1 pt-1">Partecipated at the 2019 edition of the CyberChallenge.IT project, that included lectures and exercises on cybersecurity topics such as reverse engineering, binary exploitation, cryptography, web security and others.<br>I qualified as one of the four memebers of the team for the University of Pisa and partecipated at the national competition held in Chiavari (Italy). Out team placed third (out of 18 teams)</p>
-            <div class="my-horizontal-divider w-75"></div>
-          </div>
-        </div>
+        {{/curriculum}}
       </div>
     </div>
     <!-- /Curriculum -->
@@ -173,27 +137,15 @@
       <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
         <h2 class="text-center">Contacts</h2>
         <div class="list-group py-4">
+          {{#contacts}}
           <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="https://github.com/lorenzcat" target="_blank">
-              <i class="fa fa-github" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">lorenzcat</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">yeeeee you chose me click me click me!!</small> -->
+            <a href="{{{href}}}" target="_blank">
+              <i class="{{fa_logo}}" aria-hidden="true"></i>
+              <h3 class="d-inline-block" style="padding: 0 .5rem;">{{uname}}</h3>
+              <!-- <small class="my-palette-textsecondary" style="display: none;">{{easteregg}}</small> -->
             </a>
           </div>
-          <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="https://t.me/lorenzcat" target="_blank">
-              <i class="fa fa-telegram" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">lorenzcat</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">noo click me i am better plizz!!!</small> -->
-            </a>
-          </div>
-          <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="javascript:void(0)" target="_blank">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">coming soon...</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">no need to click here :)</small> -->
-            </a>
-          </div>
+          {{/contacts}}
         </div>
       </div>
     </div>
@@ -201,7 +153,9 @@
 
     <!-- Footer -->
     <div class="py-2">
-      <p class="my-palette-textsecondary text-center">Website: Lorenzo Catoni</p>
+      {{#footer}}
+      <p class="my-palette-textsecondary text-center">{{{.}}}</p>
+      {{/footer}}
     </div>
     <!-- /Footer -->
 
