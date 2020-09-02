@@ -1,4 +1,4 @@
-me =
+me_json = 
 {
     home : 
     {
@@ -107,5 +107,3 @@ me =
         "Website: Lorenzo Catoni"
     ] // /footer
 }
-
-module.exports = me

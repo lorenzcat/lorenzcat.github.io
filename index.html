@@ -20,7 +20,7 @@
     </script>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- My CSS -->
     <link href="css/palette-dark.css" rel="stylesheet" type="text/css">
@@ -62,160 +62,181 @@
         div.my-w-smart { width: 95%; }
         img.my-w-smart { width: 30%; }  
       }
+
+
+      /* Loader */
+      .loader,
+      .loader:after {
+        border-radius: 50%;
+        width: 10em;
+        height: 10em;
+      }
+      .loader {
+        font-size: 10px;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-left: 1.1em solid #ffffff;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-animation: load8 1.1s infinite linear;
+        animation: load8 1.1s infinite linear;
+      }
+      @-webkit-keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load8 {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      /* /Loader */
       
     </style>
     <!-- /My CSS -->
   </head>
 
   <body class="my-palette-bg my-palette-textprimary">
+
+    <!-- Loading -->
+    <div class="{{^dinamicload}}d-none{{/dinamicload}}">
+      <div class="loader">Loading...</div>
+    </div>
+    <!-- /Loading -->
+
+    <!-- Main -->
+    <div class="{{#dinamicload}} d-none {{/dinamicload}}">
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-dark navbar-expand-md my-palette-onbg fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="my-navbar">
+          <ul class="navbar-nav my-palette-textsecondary">
+            <li class="nav-item my-active">
+              <a class="nav-link" href="#Home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Curriculum">Curriculum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Contacts">Contacts</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /Navbar -->
+
+      <!-- Home -->
+      <div class="w-100 d-block py-md-4 py-3" id="Home">
+        <img src="{{{home.img.img}}}" class="rounded-circle mx-auto d-block my-w-smart" alt="{{home.img.alt}}">
       
+
+        <div class="w-100 d-block py-md-3 py-2">
+          <h1 class="text-center">{{home.name}}</h1>
+          <div class="my-horizontal-divider w-25"></div>
+          <h3 class="text-center">{{{home.desc}}}</h3>
+        </div>
+      </div>
+      <!-- /Home -->
     
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-expand-md my-palette-onbg fixed-top">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="my-navbar">
-        <ul class="navbar-nav my-palette-textsecondary">
-          <li class="nav-item my-active">
-            <a class="nav-link" href="#Home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Curriculum">Curriculum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Contacts">Contacts</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- /Navbar -->
-
-    <!-- Home -->
-    <div class="w-100 d-block py-md-4 py-3" id="Home">
-      <img src="img/imgprofilo.jpg" class="rounded-circle mx-auto d-block my-w-smart" alt="This is me">
-    
-
-      <div class="w-100 d-block py-md-3 py-2">
-        <h1 class="text-center">Lorenzo Catoni</h1>
-        <div class="my-horizontal-divider w-25"></div>
-        <h3 class="text-center">Computer engineering student<br>CTF player</h3>
-      </div>
-    </div>
-    <!-- /Home -->
-  
-    <!-- Curriculum -->
-    <div class="py-md-5 py-4" id="Curriculum">
-      <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
-        <h2 class="text-center">Education</h2>
-        
-        <div class="list-group py-4">
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">Bachelor&#39;s degree</u>
-              </h5>
-            
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">OCT 18 - PRESENT, PISA (Italy)</p>
-            <p class="mb-1 pt-1">Bachelor's degree in computer engineering at <a href='http://www.ing.unipi.it/en/' target='_blank'>University of Pisa</a></p>
-            <div class="my-horizontal-divider w-75"></div>
+      <!-- Curriculum -->
+      <div class="py-md-5 py-4" id="Curriculum">
+        <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+        {{#curriculum}}
+          <h2 class="text-center">{{title}}</h2>
+          
+          <div class="list-group py-4">
+            {{#list}}
+            <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
+              
+              {{#href}}<a href="{{{.}}}" target="_blank">{{/href}}
+                <h5 class="font-weight-bold">
+                  <u class="my-color-on-hover">{{what}}</u>
+                </h5>
+              {{#href}}</a>{{/href}}
+              
+              <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">{{when.start}}{{#when.end}} - {{.}}{{/when.end}}, {{where}}</p>
+              <p class="mb-1 pt-1">{{{desc}}}</p>
+              <div class="my-horizontal-divider w-75"></div>
+            </div>
+            {{/list}}
           </div>
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">Diploma</u>
-              </h5>
-            
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">SEP 13 - JUL 18, VITERBO (Italy)</p>
-            <p class="mb-1 pt-1">High school diploma at scientific high school <a href='https://www.liceopaoloruffiniviterbo.edu.it/' target='_blank'>Paolo Ruffini</a><br>Thesis on "Nikola Testa and The War of the Currents" with a final score of 100/100</p>
-            <div class="my-horizontal-divider w-75"></div>
-          </div>
+          {{/curriculum}}
         </div>
-        <h2 class="text-center">What i have been doing recently</h2>
-        
-        <div class="list-group py-4">
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            <a href="https://itasec.it/" target="_blank">
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">ITASEC20</u>
-              </h5>
-            </a>
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">4 SEP 20, ANCONA (Italy)</p>
-            <p class="mb-1 pt-1">Gave a talk with Nicola Vella and Marco Gaglianese at Capture.IT (a workshop @ itasec) on our experince at CyberChallenge.IT 2019 and in capture the flag competitions in general, plus gave some tips aimed at beginners intrested in CTFs</p>
-            <div class="my-horizontal-divider w-75"></div>
-          </div>
-          <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-            
-            <a href="https://cyberchallenge.it/halloffame/2019" target="_blank">
-              <h5 class="font-weight-bold">
-                <u class="my-color-on-hover">CyberChallenge.IT 2019</u>
-              </h5>
-            </a>
-            
-            <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">MAR 19 - JUL 19, PISA (Italy)</p>
-            <p class="mb-1 pt-1">Partecipated at the 2019 edition of the CyberChallenge.IT project, that included lectures and exercises on cybersecurity topics such as reverse engineering, binary exploitation, cryptography, web security and others.<br>I qualified as one of the four memebers of the team for the University of Pisa and partecipated at the national competition held in Chiavari (Italy). Out team placed third (out of 18 teams)</p>
-            <div class="my-horizontal-divider w-75"></div>
+      </div>
+      <!-- /Curriculum -->
+
+      <!-- Contacts -->
+      <div class="py-md-5 py-4" id="Contacts">
+        <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+          <h2 class="text-center">Contacts</h2>
+          <div class="list-group py-4">
+            {{#contacts}}
+            <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
+              <a href="{{{href}}}" target="_blank">
+                <i class="{{fa_logo}}" aria-hidden="true"></i>
+                <h3 class="d-inline-block" style="padding: 0 .5rem;">{{uname}}</h3>
+                <!-- <small class="my-palette-textsecondary" style="display: none;">{{easteregg}}</small> -->
+              </a>
+            </div>
+            {{/contacts}}
           </div>
         </div>
       </div>
-    </div>
-    <!-- /Curriculum -->
+      <!-- /Contacts -->
 
-     <!-- Contacts -->
-     <div class="py-md-5 py-4" id="Contacts">
-      <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
-        <h2 class="text-center">Contacts</h2>
-        <div class="list-group py-4">
-          <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="https://github.com/lorenzcat" target="_blank">
-              <i class="fa fa-github" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">lorenzcat</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">yeeeee you chose me click me click me!!</small> -->
-            </a>
-          </div>
-          <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="https://t.me/lorenzcat" target="_blank">
-              <i class="fa fa-telegram" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">lorenzcat</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">noo click me i am better plizz!!!</small> -->
-            </a>
-          </div>
-          <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-            <a href="javascript:void(0)" target="_blank">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <h3 class="d-inline-block" style="padding: 0 .5rem;">coming soon...</h3>
-              <!-- <small class="my-palette-textsecondary" style="display: none;">no need to click here :)</small> -->
-            </a>
-          </div>
-        </div>
+      <!-- Footer -->
+      <div class="py-2">
+        {{#footer}}
+        <p class="my-palette-textsecondary text-center">{{{.}}}</p>
+        {{/footer}}
       </div>
-    </div>
-    <!-- /Contacts -->
-
-    <!-- Footer -->
-    <div class="py-2">
-      <p class="my-palette-textsecondary text-center">Website: Lorenzo Catoni</p>
-    </div>
     <!-- /Footer -->
+
+    </div>
+    <!-- /Main -->
 
     <!-- Bootstrap core JavaScript plus Mustache plus Fontawesome
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-    <script src="https://getbootstrap.com/docs/4.0//dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script defer src=https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js></script>
     <script defer src="https://use.fontawesome.com/846aa8fc5b.js"></script>
 
     <!-- My Javascript -->
+    <script src="me_json.js">/* Import data from this file*/</script>
     <script>
+      // fill page according to content of me_json with mustache
+      // https://github.com/janl/mustache.js
+      $('script:nth-last-child(2)').ready(function(){
+        let rendered_html = Mustache.render($('body').html(), me_json);
+        $('body').html(rendered_html);
+      });
+      //template.siblings().last().remove(); // remove last horizontal divider, i want it ony between two elements
+
+
       // Change active fragment in navbar on click, based on this post
       // https://stackoverflow.com/questions/39851953/dynamically-changing-active-class-or-adding-navbar-to-each-page
       $('.nav-link').click( function() {
