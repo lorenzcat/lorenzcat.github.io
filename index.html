@@ -27,11 +27,11 @@
     <style>
       body { padding-top: 50px; } /* because navbar fixed-top covers content */
 
-      .my-palette-bg, .my-palette-bg * { background-color: var(--my-palette-bg) !important; }
-      .my-palette-onbg, .my-palette-onbg * { background-color: var(--my-palette-onbg) !important; }      
-      .my-palette-textprimary, .my-palette-textprimary * { color: var(--my-palette-textprimary) !important; }
-      .my-palette-textsecondary, .my-palette-textsecondary * { color:var(--my-palette-textsecondary) !important; }
-      .my-palette-textcolor1, .my-palette-textcolor1 * { color: var(--my-palette-color1) !important; }
+      .my-palette-bg,           .my-palette-bg            * { background-color: var(--my-palette-bg) !important;  }
+      .my-palette-onbg,         .my-palette-onbg          * { background-color: var(--my-palette-onbg) !important;}      
+      .my-palette-textprimary,  .my-palette-textprimary   * { color: var(--my-palette-textprimary) !important;    }
+      .my-palette-textsecondary,.my-palette-textsecondary * { color:var(--my-palette-textsecondary) !important;   }
+      .my-palette-textcolor1,   .my-palette-textcolor1    * { color: var(--my-palette-color1) !important;         }
 
       .navbar { border-bottom: 1px solid var(--my-palette-bg);}
       
@@ -46,23 +46,30 @@
       }
       
       div.my-horizontal-divider { /* horizontal line */
-        display: block;
         margin: 1rem auto;
         border: 0;
         border-top: 1px solid var(--my-palette-color1);
       }
       
-      #Contacts {font-size: 24px;}
+      #Contacts   {font-size: 24px;}
       #Contacts a { text-decoration: none;}
+
+      /* img ( w/placeholder while loading) */
+      .img {
+        position: relative;
+        width: 17%;
+        height: 0;
+        padding-bottom: 17%;
+        background-color: lightgray !important;
+        background-size: 100%;
+      }
 
       /* Same breakpoint as bootstrap md */
       div.my-w-smart { width: 60%; }
-      img.my-w-smart { width: 17%; }
       @media only screen and (max-width: 768px) {
         div.my-w-smart { width: 95%; }
-        img.my-w-smart { width: 30%; }  
+        .img           { width: 30%; padding-bottom: 30%; }  
       }
-
 
       /* Loader */
       .loader,
@@ -114,128 +121,127 @@
   </head>
 
   <body class="my-palette-bg my-palette-textprimary">
+    <!-- MyPage -->
+    <div id="mypage">
 
-    <!-- Loading -->
-    <div class="{{^dinamicload}}d-none{{/dinamicload}}">
-      <div class="loader">Loading...</div>
-    </div>
-    <!-- /Loading -->
+      <!-- Loading -->
+      <div class="{{^dinamicload}}d-none{{/dinamicload}}">
+        <div class="loader">Loading...</div>
+      </div>
+      <!-- /Loading -->
 
-    <!-- Main -->
-    <div class="{{#dinamicload}} d-none {{/dinamicload}}">
+      <!-- Main -->
+      <div class="{{#dinamicload}} d-none {{/dinamicload}}">
 
-      <!-- Navbar -->
-      <nav class="navbar navbar-dark navbar-expand-md my-palette-onbg fixed-top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark navbar-expand-md my-palette-onbg fixed-top">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="my-navbar">
-          <ul class="navbar-nav my-palette-textsecondary">
-            <li class="nav-item my-active">
-              <a class="nav-link" href="#Home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Curriculum">Curriculum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#Contacts">Contacts</a>
-            </li>
-          </ul>
+          <div class="collapse navbar-collapse" id="my-navbar">
+            <ul class="navbar-nav my-palette-textsecondary">
+              <li class="nav-item my-active">
+                <a class="nav-link" href="#Home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Curriculum">Curriculum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#Contacts">Contacts</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- /Navbar -->
+
+        <!-- Home -->
+        <div class="w-100 d-block py-md-4 py-3" id="Home">
+          <div class="img rounded-circle mx-auto" style="background-image: url('{{{home.img.img}}}');"></div> 
+
+          <div class="w-100 d-block py-md-3 py-2">
+            <h1 class="text-center">{{home.name}}</h1>
+            <div class="my-horizontal-divider w-25"></div>  
+            <h3 class="text-center">{{{home.desc}}}</h3>
+          </div>
         </div>
-      </nav>
-      <!-- /Navbar -->
-
-      <!-- Home -->
-      <div class="w-100 d-block py-md-4 py-3" id="Home">
-        <img src="{{{home.img.img}}}" class="rounded-circle mx-auto d-block my-w-smart" alt="{{home.img.alt}}">
+        <!-- /Home -->
       
-
-        <div class="w-100 d-block py-md-3 py-2">
-          <h1 class="text-center">{{home.name}}</h1>
-          <div class="my-horizontal-divider w-25"></div>
-          <h3 class="text-center">{{{home.desc}}}</h3>
-        </div>
-      </div>
-      <!-- /Home -->
-    
-      <!-- Curriculum -->
-      <div class="py-md-5 py-4" id="Curriculum">
-        <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
-        {{#curriculum}}
-          <h2 class="text-center">{{title}}</h2>
-          
-          <div class="list-group py-4">
-            {{#list}}
-            <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
-              
-              {{#href}}<a href="{{{.}}}" target="_blank">{{/href}}
-                <h5 class="font-weight-bold">
-                  <u class="my-color-on-hover">{{what}}</u>
-                </h5>
-              {{#href}}</a>{{/href}}
-              
-              <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">{{when.start}}{{#when.end}} - {{.}}{{/when.end}}, {{where}}</p>
-              <p class="mb-1 pt-1">{{{desc}}}</p>
-              <div class="my-horizontal-divider w-75"></div>
+        <!-- Curriculum -->
+        <div class="py-md-5 py-4" id="Curriculum">
+          <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+          {{#curriculum}}
+            <h2 class="text-center">{{title}}</h2>
+            
+            <div class="list-group py-4">
+              {{#list}}
+              <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
+                
+                {{#href}}<a href="{{{.}}}" target="_blank">{{/href}}
+                  <h5 class="font-weight-bold">
+                    <u class="my-color-on-hover">{{what}}</u>
+                  </h5>
+                {{#href}}</a>{{/href}}
+                
+                <p class="my-palette-textsecondary" style="margin-top: -0.3rem;">{{when.start}}{{#when.end}} - {{.}}{{/when.end}}, {{where}}</p>
+                <p class="mb-1 pt-1">{{{desc}}}</p>
+                <div class="my-horizontal-divider w-75"></div>
+              </div>
+              {{/list}}
             </div>
-            {{/list}}
-          </div>
-          {{/curriculum}}
-        </div>
-      </div>
-      <!-- /Curriculum -->
-
-      <!-- Contacts -->
-      <div class="py-md-5 py-4" id="Contacts">
-        <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
-          <h2 class="text-center">Contacts</h2>
-          <div class="list-group py-4">
-            {{#contacts}}
-            <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
-              <a href="{{{href}}}" target="_blank">
-                <i class="{{fa_logo}}" aria-hidden="true"></i>
-                <h3 class="d-inline-block" style="padding: 0 .5rem;">{{uname}}</h3>
-                <!-- <small class="my-palette-textsecondary" style="display: none;">{{easteregg}}</small> -->
-              </a>
-            </div>
-            {{/contacts}}
+            {{/curriculum}}
           </div>
         </div>
-      </div>
-      <!-- /Contacts -->
+        <!-- /Curriculum -->
 
-      <!-- Footer -->
-      <div class="py-2">
-        {{#footer}}
-        <p class="my-palette-textsecondary text-center">{{{.}}}</p>
-        {{/footer}}
-      </div>
-    <!-- /Footer -->
+        <!-- Contacts -->
+        <div class="py-md-5 py-4" id="Contacts">
+          <div class="mx-auto rounded my-palette-onbg px-md-3 py-3 my-w-smart">
+            <h2 class="text-center">Contacts</h2>
+            <div class="list-group py-4">
+              {{#contacts}}
+              <div class="list-group-item border-0" style="padding: 0 .75rem !important;">
+                <a href="{{{href}}}" target="_blank">
+                  <i class="{{fa_logo}}" aria-hidden="true"></i>
+                  <h3 class="d-inline-block" style="padding: 0 .5rem;">{{uname}}</h3>
+                  <!-- <small class="my-palette-textsecondary" style="display: none;">{{easteregg}}</small> -->
+                </a>
+              </div>
+              {{/contacts}}
+            </div>
+          </div>
+        </div>
+        <!-- /Contacts -->
 
+        <!-- Footer -->
+        <div class="py-2">
+          {{#footer}}
+          <p class="my-palette-textsecondary text-center">{{{.}}}</p>
+          {{/footer}}
+        </div>
+      <!-- /Footer -->
+
+      </div>
+      <!-- /Main -->
     </div>
-    <!-- /Main -->
+    <!-- /MyPage -->
 
     <!-- Bootstrap core JavaScript plus Mustache plus Fontawesome
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script defer src=https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js></script>
-    <script defer src="https://use.fontawesome.com/846aa8fc5b.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js></script>
+    <script src="https://use.fontawesome.com/846aa8fc5b.js"></script>
 
     <!-- My Javascript -->
     <script src="me_json.js">/* Import data from this file*/</script>
     <script>
       // fill page according to content of me_json with mustache
       // https://github.com/janl/mustache.js
-      $('script:nth-last-child(2)').ready(function(){
-        let rendered_html = Mustache.render($('body').html(), me_json);
-        $('body').html(rendered_html);
-      });
-      //template.siblings().last().remove(); // remove last horizontal divider, i want it ony between two elements
-
+      let rendered_html = Mustache.render($('#mypage').html(), me_json);
+      $('#mypage').html(rendered_html);
 
       // Change active fragment in navbar on click, based on this post
       // https://stackoverflow.com/questions/39851953/dynamically-changing-active-class-or-adding-navbar-to-each-page
